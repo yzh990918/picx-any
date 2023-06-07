@@ -1,8 +1,6 @@
-import { ElMessage } from 'element-plus'
 import { ImageHandleResult } from '@/common/model'
 import { getUuid } from '@/utils/common-utils'
 import { imgFileToBase64 } from '@/utils/image-utils'
-import { IMG_UPLOAD_MAX_SIZE } from '@/common/constant'
 
 /**
  * 获取文件名
@@ -70,10 +68,10 @@ export const gettingFilesHandle = (file: File): Promise<ImageHandleResult | null
 
     const base64 = (await imgFileToBase64(file)) || ''
 
-    if (getFileSize(base64.length) >= IMG_UPLOAD_MAX_SIZE * 1024) {
-      ElMessage.error(`${file.name} 超过 ${IMG_UPLOAD_MAX_SIZE} MB，跳过选择`)
-      resolve(null)
-    }
+    // if (getFileSize(base64.length) >= IMG_UPLOAD_MAX_SIZE * 1024) {
+    //   ElMessage.error(`${file.name} 超过 ${IMG_UPLOAD_MAX_SIZE} MB，跳过选择`)
+    //   resolve(null)
+    // }
 
     resolve({
       uuid: getUuid(),
